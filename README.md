@@ -1,4 +1,5 @@
 # world-crime-feeds-agent
 OneFirewall Alliance Agent for World Crime Feeds (WCF)
 
-join@onefirewall.com
+Email: join@onefirewall.com
+
