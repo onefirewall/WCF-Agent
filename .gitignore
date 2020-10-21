@@ -4,7 +4,7 @@ temp
 *.logs
 .DS_*
 logs/*.log*
-
+lock.txt
 node_modules
 node_modules2
 *.node
