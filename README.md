@@ -1,6 +1,9 @@
 # World Crime Feeds (WCF) - Agent
 ## By OneFirewall Alliance
 
+OneFirewall_Agent_Logo.png
+![OneFirewall Logo](images/OneFirewall_Agent_Logo.png "OneFirewall Agent")
+
 ## Install
     0. sudo apt-get install zip
     1. curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
