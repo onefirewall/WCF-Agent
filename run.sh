@@ -1,6 +1,6 @@
 #!/bin/bash
 ###########################################
-#######   OneFirewall Alliance LTD   ######
+#        OneFirewall Alliance LTD         #
 ###########################################
 
 INSTALLED_DIR=$(pwd)

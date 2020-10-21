@@ -1,9 +1,8 @@
-var request = require('request')
-var levelup = require('levelup')
-var level = require('level')
+// var request = require('request')
+// var levelup = require('levelup')
+// var level = require('level')
 
 var Remote_Write = require('../Remote/Remote_Write.js')
-
 
 var DBCleanUP = function (){
 
@@ -43,12 +42,10 @@ var DBCleanUP = function (){
         }).on('end', function () {
             remote_write.send_bulk_events(input_obj, reports)
         })
-        
-        
+           
     }
 
-
- }
+}
  
- module.exports = DBCleanUP
+module.exports = DBCleanUP
  

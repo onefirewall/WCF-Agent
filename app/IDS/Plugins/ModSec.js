@@ -31,7 +31,6 @@ var ModSec = function (){
 
                         var ip2 = jsonArray[i]['src_ip']
                         
-
                         if(ip0 && ip0.match(ip_pattern) && ip_regx.test(ip0.match(ip_pattern)[0])){
                             ip = ip0.match(ip_pattern)[0]
 
@@ -62,7 +61,7 @@ var ModSec = function (){
                                 entries_to_send[x].confidence += 0.1
                                 entries_to_send[x].notes += notes + ", "
                                 break
-                            }//1.5
+                            }
                         }
 
                         if(found===false){
@@ -80,12 +79,9 @@ var ModSec = function (){
                     }
                 }
                 new Insert_Entries_In_DB().insert_entries(input_obj, entries_to_send, callback_array)
-               
             }
         )
-
     }
-
  }
  
  module.exports = ModSec
