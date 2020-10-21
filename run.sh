@@ -44,8 +44,6 @@ if [ ! -f $LOCKFILE ]; then
     M=$(date +%M) # Minute
     d=$(date +%d) # Day
 
-    git pull 2>&1 >> stdout.log;
-
     # Reset logs on 1:00am every 1 and 15 of the months
     if (( (1 == 10#$d || 10#$d == 5 || 10#$d == 7 || 10#$d == 10 || 10#$d == 15 || 10#$d == 20 || 10#$d == 25) && (1 == 10#$H) && (0 == 10#$M) )); then 
         rm -rf stderr.log stdout.log;
