@@ -5,7 +5,7 @@
 ![OneFirewall Logo](images/agent.png "OneFirewall Agent")
 
 ## Obtain OneFirewall Certificate
-    0. Register or login at [app.onefirewall.com](https://app.onefirewall.com)
+    0. Register or login at https://app.onefirewall.com
     1. Generate a config.json file which contain a certificate
 
 *The certificate is provided for Threat Inteligence Feeds older than 7 days, for commercial use please see the [subscriptions plans](https://onefirewall.com/get-started/index.html)*
