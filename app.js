@@ -183,25 +183,33 @@ function no_selection(){
 }
 
 
-try{
-    config = require(args[3]);
-}catch(er){
-    console.error("ERROR: config.json file is missing")
-    process.exit(1)
+if(args[2]==="test"){
+    console.log("Works!")
+}else{
+    try{
+        config = require(args[3]);
+    }catch(er){
+        console.error("ERROR: config.json file is missing")
+        process.exit(1)
+    }
+    
+    
+    if(args[2]==="reset")
+        reset_function()
+    
+    else if(args[2]==="ips")
+        ips_call()
+    
+    else if(args[2]==="ids")
+        ids_call()
+    
+    else if(args[2]==="db")
+        db_call()
+    
+    else if(args[2]==="test")
+        test_selection()
+    
+    else
+        no_selection()
+    
 }
-
-
-if(args[2]==="reset")
-    reset_function()
-
-else if(args[2]==="ips")
-    ips_call()
-
-else if(args[2]==="ids")
-    ids_call()
-
-else if(args[2]==="db")
-    db_call()
-
-else
-    no_selection()

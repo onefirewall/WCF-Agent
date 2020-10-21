@@ -3,8 +3,16 @@
 #        OneFirewall Alliance LTD         #
 ###########################################
 
-wget https://github.com/onefirewall/WCF-Agent/archive/latet.zip
-unzip latet.zip
-cd WCF-Agent-latet
+wget https://github.com/onefirewall/WCF-Agent/archive/latest.zip
+unzip latest.zip
+cd WCF-Agent-latest
+
+# Remove not neccessary files
+rm -rf .github/
+rm -rf images/
+rm -rf test/
+rm -rf .gitignore
+rm -rf README.md
+
 npm install
-node app
+node app test
