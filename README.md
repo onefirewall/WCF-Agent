@@ -2,7 +2,7 @@
 ## By OneFirewall Alliance
 
 
-![OneFirewall Logo](images/OneFirewall_Agent_Logo.png "OneFirewall Agent")
+![OneFirewall Logo](images/agent.png "OneFirewall Agent")
 
 ## Install
     0. sudo apt-get install zip
