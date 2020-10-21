@@ -1,7 +1,7 @@
 # World Crime Feeds (WCF) - Agent
 ## By OneFirewall Alliance
 
-OneFirewall_Agent_Logo.png
+
 ![OneFirewall Logo](images/OneFirewall_Agent_Logo.png "OneFirewall Agent")
 
 ## Install
