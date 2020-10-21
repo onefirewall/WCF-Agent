@@ -11,14 +11,13 @@
 *The certificate is provided for Threat Intelligence Feeds older than 7 days, for commercial use please see the [subscriptions plans](https://onefirewall.com/get-started/index.html?tag=github)*
 
 
-## Install
-    0. sudo apt-get install zip
-    1. curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
-    2. sudo apt-get install -y nodejs
-    3. git clone https://github.com/onefirewall/WCF-Agent.git
-    4. cd WCF-Agent
-    5. npm install
+## Pre Install
+    1. sudo apt-get install zip
+    2. curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
+    3. sudo apt-get install -y nodejs
 
+## Install
+    1. wget -O - https://raw.githubusercontent.com/onefirewall/WCF-Agent/master/install.sh | bash
 
 ## Run
     1. node app reset $(pwd)/config.json 
