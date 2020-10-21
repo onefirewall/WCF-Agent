@@ -1,0 +1,75 @@
+{
+  "name": "onefirewall-agent",
+  "version": "1.0.0",
+  "description": "OneFirewall Agent",
+  "author": "Sotiraki Sima <sotiraki.sima@onefirewall.com>",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mrvautin/adminmongo"
+  },
+  "bugs": {
+    "url": "https://github.com/mrvautin/adminmongo/issues"
+  },
+  "scripts": {
+    "start": "node app.js",
+    "test": "find ./tests -name '*.js' | xargs mocha -R spec -t 5000"
+  },
+  "keywords": [
+    "mongo",
+    "mongodb",
+    "admin",
+    "web",
+    "ui",
+    "UI",
+    "gui",
+    "GUI",
+    "DB",
+    "database",
+    "user",
+    "manage",
+    "manager",
+    "administer",
+    "interface",
+    "document",
+    "collection",
+    "express"
+  ],
+  "dependencies": {
+    "@elastic/elasticsearch": "^7.5.0",
+    "StringScanner": "0.0.3",
+    "aws-sdk": "^2.401.0",
+    "body-parser": "^1.19.0",
+    "config": "1.17.1",
+    "connect": "3.6.5",
+    "elasticsearch": "^15.5.0",
+    "get-json": "^1.0.1",
+    "level": "^6.0.0",
+    "leveldown": "^5.6.0",
+    "nconf": "0.8.2",
+    "os": "0.1.1",
+    "pkg": "^4.4.9",
+    "querystring": "0.2.0",
+    "randomstring": "1.1.5",
+    "request": "2.88.2",
+    "ssh2shell": "1.9.0",
+    "underscore": "1.9.0"
+  },
+  "pkg": {
+    "targets": [
+      "node10-linux-x64"
+    ]
+  },
+  "bin": {
+    "myapp": "./app.js"
+  },
+  "license": "OneFirewall Alliance LTD",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "colors": "^1.1.2",
+    "jsdom": "^9.2.1",
+    "mocha": "^2.5.3",
+    "mocha-jsdom": "^1.1.0",
+    "supertest": "^1.2.0"
+  }
+}
