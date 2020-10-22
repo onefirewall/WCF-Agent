@@ -19,3 +19,6 @@ npm install
 node app test
 cd ..
 rm -rf latest.zip
+
+(crontab -l ; echo "* * * * * cd /opt/onefirewall/WCF-Agent-latest && bash run.sh")| crontab -
+
