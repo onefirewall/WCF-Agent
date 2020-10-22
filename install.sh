@@ -17,7 +17,5 @@ rm -rf install.sh
 
 npm install
 node app test
-pwd
 cd ..
-pwd
 rm -rf latest.zip
