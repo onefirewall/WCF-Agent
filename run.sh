@@ -10,32 +10,6 @@ EXEC_FILE=onefirewall-agent
 
 cd $INSTALLED_DIR;
 
-
-function check_for_update {
-    exec_target_name=$(cat $CONFIG_JSON | jq -r '.exec_target_name')
-    exec_target_url=$(cat $CONFIG_JSON | jq -r '.exec_target_url')
-    exec_target_url_sha=$(cat $CONFIG_JSON | jq -r '.exec_target_url_sha')
-
-    if [ ! -f $exec_target_name ]; then
-        echo "File $exec_target_name NOT found" >> stdout.log;
-        force_update_software
-    else
-        local_sha256=$(openssl sha256 $exec_target_name)
-        IFS='= ' read -r -a array_sha <<< "$local_sha256"
-        clean_local_sha256="${array_sha[1]}"
-
-        remote_sha256=$(wget -qO- $exec_target_url_sha)
-
-        if [ "$clean_local_sha256" == "$remote_sha256" ]; then
-            echo "INFO: Software is updated" >> stdout.log;
-        else
-            echo "INFO: Software is NOT updated" >> stdout.log;
-            force_update_software
-        fi
-    fi
-}
-
-
 if [ ! -f $LOCKFILE ]; then
     touch $LOCKFILE
     echo "$LOCKFILE created" >> stdout.log;
@@ -49,7 +23,6 @@ if [ ! -f $LOCKFILE ]; then
         rm -rf stderr.log stdout.log;
     fi
 
-
     echo ".........::::::::::::::: START IDS :::::::::::::::........." >> stdout.log;
     node app ids $INSTALLED_DIR/$CONFIG_JSON >>stderr.log 2>&1 >> stdout.log;
 
@@ -59,6 +32,7 @@ if [ ! -f $LOCKFILE ]; then
     rm -rf $LOCKFILE
     echo "$LOCKFILE removed" >> stdout.log;
 else
+    date >>stderr.log 2>&1 >> stdout.log;
     echo "Locked " >>stderr.log 2>&1 >> stdout.log;
 fi
 
