@@ -20,9 +20,9 @@
     1. wget -O - https://raw.githubusercontent.com/onefirewall/WCF-Agent/master/install.sh | bash
 
 ## Run
-    1. node app reset $(pwd)/config.json 
-    2. node app ips $(pwd)/config.json 
-    3. node app ids $(pwd)/config.json 
-    4. node app db $(pwd)/config.json 
+    1. node app reset $(pwd)/config.json    # To reset WCF locally
+    2. node app ips $(pwd)/config.json      # To download the latest Threat Feeds
+    3. node app ids $(pwd)/config.json      # To push security events from local IDSs
+    4. node app db $(pwd)/config.json       # To view the Level DB locally
 
 [onefirewall.com](https://onefirewall.com?tag=github-wcf-agent)

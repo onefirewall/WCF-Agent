@@ -13,6 +13,9 @@ rm -rf images/
 rm -rf test/
 rm -rf .gitignore
 rm -rf README.md
+rm -rf install.sh
 
 npm install
 node app test
+cd ..
+rm -rf latest.zip
