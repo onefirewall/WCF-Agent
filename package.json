@@ -1,7 +1,7 @@
 {
   "name": "onefirewall-agent",
-  "version": "1.0.0",
-  "description": "OneFirewall Agent",
+  "version": "2020.11.07",
+  "description": "World Crime Feeds (WCF) - Agent",
   "author": "Sotiraki Sima <sotiraki.sima@onefirewall.com>",
   "private": true,
   "repository": {
@@ -63,7 +63,7 @@
   "bin": {
     "myapp": "./app.js"
   },
-  "license": "OneFirewall Alliance LTD",
+  "license": "MIT License",
   "devDependencies": {
     "chai": "^3.5.0",
     "colors": "^1.1.2",
