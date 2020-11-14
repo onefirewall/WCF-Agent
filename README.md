@@ -5,15 +5,15 @@
 ![OneFirewall Logo](images/agent-onefirewall.png "OneFirewall Agent")
 
 ## Obtain OneFirewall Certificate
-    0. Register or login at https://app.onefirewall.com
-    1. Generate a config.json file which contain a certificate
+1. Login at https://app.onefirewall.com
+2. Generate a config.json file which hold a certificate for accessing the world crime feeds
 
-*The certificate is provided for Threat Intelligence Feeds older than 7 days, for commercial use please see the [subscriptions plans](https://onefirewall.com/get-started/index.html?tag=github)*
+*The use of the WCF Database can be obtained via a certificate which is provided for Threat Intelligence Feeds older than 7 days (community edition), for commercial use please see the [subscriptions plans](https://onefirewall.com/get-started/index.html?tag=github)*
 
 
 ## Pre Install
     1. sudo apt-get install zip
-    2. curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
+    2. curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
     3. sudo apt-get install -y nodejs
 
 ## Install

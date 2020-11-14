@@ -1,6 +1,6 @@
 {
   "name": "onefirewall-agent",
-  "version": "2020.11.07",
+  "version": "2.11.07",
   "description": "World Crime Feeds (WCF) - Agent",
   "author": "Sotiraki Sima <sotiraki.sima@onefirewall.com>",
   "private": true,
