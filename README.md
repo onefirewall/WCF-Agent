@@ -6,7 +6,7 @@
 
 ## Obtain OneFirewall Certificate
 1. Login at https://app.onefirewall.com
-2. Generate a config.json file which hold a certificate for accessing the world crime feeds
+2. Generate a config.json file which holds a certificate for accessing the World Crime Feeds API
 
 *The use of the WCF Database can be obtained via a certificate which is provided for Threat Intelligence Feeds older than 7 days (community edition), for commercial use please see the [subscriptions plans](https://onefirewall.com/get-started/index.html?tag=github)*
 

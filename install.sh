@@ -22,10 +22,11 @@ rm -rf install.sh
 cd ..
 
 # remove previous installation
-rm -rf /opt/onefirewall/WCF-Agent-latest
+sudo rm -rf /opt/onefirewall/WCF-Agent-latest
 
 # copy folder
-cp -r WCF-Agent-latest /opt/onefirewall/
+sudo mkdir -p /opt/onefirewall/
+sudo cp -r WCF-Agent-latest /opt/onefirewall/
 
 npm install
 node app test
