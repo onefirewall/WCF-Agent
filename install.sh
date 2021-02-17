@@ -3,8 +3,13 @@
 #        OneFirewall Alliance LTD         #
 ###########################################
 
+# pre-install
+curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+sudo apt-get install -y nodejs zip
+
 wget https://github.com/onefirewall/WCF-Agent/archive/latest.zip
 unzip latest.zip
+rm -rf latest.zip
 cd WCF-Agent-latest
 
 # Remove not neccessary files
@@ -14,11 +19,16 @@ rm -rf test/
 rm -rf .gitignore
 rm -rf README.md
 rm -rf install.sh
+cd ..
+
+# remove previous installation
+rm -rf /opt/onefirewall/WCF-Agent-latest
+
+# copy folder
+cp -r WCF-Agent-latest /opt/onefirewall/
 
 npm install
 node app test
-cd ..
-rm -rf latest.zip
+cd  /opt/onefirewall/WCF-Agent-latest
 
 (crontab -l ; echo "* * * * * cd /opt/onefirewall/WCF-Agent-latest && bash run.sh")| crontab -
-

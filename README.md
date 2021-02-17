@@ -10,12 +10,6 @@
 
 *The use of the WCF Database can be obtained via a certificate which is provided for Threat Intelligence Feeds older than 7 days (community edition), for commercial use please see the [subscriptions plans](https://onefirewall.com/get-started/index.html?tag=github)*
 
-
-## Pre Install
-    1. sudo apt-get install zip
-    2. curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
-    3. sudo apt-get install -y nodejs
-
 ## Install
     1. wget -O - https://raw.githubusercontent.com/onefirewall/WCF-Agent/master/install.sh | bash
 
