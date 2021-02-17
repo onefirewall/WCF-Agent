@@ -29,6 +29,6 @@ cp -r WCF-Agent-latest /opt/onefirewall/
 
 npm install
 node app test
-cd  /opt/onefirewall/WCF-Agent-latest
+
 
 (crontab -l ; echo "* * * * * cd /opt/onefirewall/WCF-Agent-latest && bash run.sh")| crontab -

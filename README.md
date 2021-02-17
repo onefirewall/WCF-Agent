@@ -11,12 +11,17 @@
 *The use of the WCF Database can be obtained via a certificate which is provided for Threat Intelligence Feeds older than 7 days (community edition), for commercial use please see the [subscriptions plans](https://onefirewall.com/get-started/index.html?tag=github)*
 
 ## Install
-    1. wget -O - https://raw.githubusercontent.com/onefirewall/WCF-Agent/master/install.sh | bash
+```
+wget -O - https://raw.githubusercontent.com/onefirewall/WCF-Agent/master/install.sh | bash
+```
 
 ## Run
-    1. node app reset $(pwd)/config.json    # To reset WCF locally
-    2. node app ips $(pwd)/config.json      # To download the latest Threat Feeds
-    3. node app ids $(pwd)/config.json      # To push security events from local IDSs
-    4. node app db $(pwd)/config.json       # To view the Level DB locally
+```
+cd  /opt/onefirewall/WCF-Agent-latest
+node app reset $(pwd)/config.json    # To reset WCF locally
+node app ips $(pwd)/config.json      # To download the latest Threat Feeds
+node app ids $(pwd)/config.json      # To push security events from local IDSs
+node app db $(pwd)/config.json       # To view the Level DB locally
+```
 
 [onefirewall.com](https://onefirewall.com?tag=github-wcf-agent)
