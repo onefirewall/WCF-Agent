@@ -15,6 +15,8 @@ rm -rf latest.zip
 cd WCF-Agent-latest
 
 # Remove not neccessary files
+npm install
+node app test
 rm -rf .github/
 rm -rf images/
 rm -rf test/
@@ -31,9 +33,5 @@ ls
 # copy folder
 sudo mkdir -p /opt/onefirewall/
 sudo cp -r WCF-Agent-latest /opt/onefirewall/
-
-npm install
-node app test
-
 
 (crontab -l ; echo "* * * * * cd /opt/onefirewall/WCF-Agent-latest && bash run.sh")| crontab -
