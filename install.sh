@@ -2,6 +2,7 @@
 ###########################################
 #        OneFirewall Alliance LTD         #
 ###########################################
+echo "WV1"
 
 # pre-install
 rm -rf WCF-Agent-latest/
@@ -25,6 +26,8 @@ cd ..
 # remove previous installation
 sudo rm -rf /opt/onefirewall/WCF-Agent-latest
 
+pwd
+ls
 # copy folder
 sudo mkdir -p /opt/onefirewall/
 sudo cp -r WCF-Agent-latest /opt/onefirewall/
