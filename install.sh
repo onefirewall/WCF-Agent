@@ -34,4 +34,4 @@ ls
 sudo mkdir -p /opt/onefirewall/
 sudo cp -r WCF-Agent-latest /opt/onefirewall/
 
-(crontab -l ; echo "* * * * * cd /opt/onefirewall/WCF-Agent-latest && bash run.sh")| crontab -
+#(crontab -l ; echo "* * * * * cd /opt/onefirewall/WCF-Agent-latest && bash run.sh")| crontab -
