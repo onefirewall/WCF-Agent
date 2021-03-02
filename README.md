@@ -5,15 +5,15 @@
 ![OneFirewall Logo](images/agent-onefirewall.png "OneFirewall Agent")
 
 ## Obtain OneFirewall Certificate
-1. Login at https://app.onefirewall.com
-2. Generate a config.json file which holds a certificate for accessing the World Crime Feeds API
-
 *The use of the WCF Database can be obtained via a certificate which is provided for Threat Intelligence Feeds older than 7 days (community edition), for commercial use please see the [subscriptions plans](https://onefirewall.com/get-started/index.html?tag=github)*
 
 ## Install
+1. Install the latest version of WCF Agent by OneFirewall
 ```
 wget -O - https://raw.githubusercontent.com/onefirewall/WCF-Agent/master/install.sh | bash
 ```
+2. Login at https://app.onefirewall.com
+3. Generate a config.json file which holds a certificate for accessing the World Crime Feeds API
 
 ## Run
 ```
