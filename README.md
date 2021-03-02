@@ -24,4 +24,10 @@ node app ids $(pwd)/config.json      # To push security events from local IDSs
 node app db $(pwd)/config.json       # To view the Level DB locally
 ```
 
+## Crontab
+As a root add the below command in crontab 
+```
+* * * * * cd /opt/onefirewall/WCF-Agent-latest && bash run.sh
+```
+
 [onefirewall.com](https://onefirewall.com?tag=github-wcf-agent)
