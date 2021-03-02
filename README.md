@@ -12,8 +12,7 @@
 ```
 wget -O - https://raw.githubusercontent.com/onefirewall/WCF-Agent/master/install.sh | bash
 ```
-2. Login at https://app.onefirewall.com
-3. Generate a config.json file which holds a certificate for accessing the World Crime Feeds API
+2. Login at https://app.onefirewall.com & Generate a config.json file which holds a certificate for accessing the World Crime Feeds API (navigate to Agent page to select the configuration before you generate the config.json file)
 
 ## Run
 ```
