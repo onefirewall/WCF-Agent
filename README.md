@@ -14,7 +14,7 @@ wget -O - https://raw.githubusercontent.com/onefirewall/WCF-Agent/master/install
 ```
 2. Login at https://app.onefirewall.com & Generate a config.json file which holds a certificate for accessing the World Crime Feeds API (navigate to Agent page to select the configuration before you generate the config.json file)
 
-## Run
+## Tests
 ```
 cd  /opt/onefirewall/WCF-Agent-latest
 node app reset $(pwd)/config.json    # To reset WCF locally
@@ -23,7 +23,7 @@ node app ids $(pwd)/config.json      # To push security events from local IDSs
 node app db $(pwd)/config.json       # To view the Level DB locally
 ```
 
-## Crontab
+## Run continuously via Crontab
 As a root add the below command in crontab 
 ```
 * * * * * cd /opt/onefirewall/WCF-Agent-latest && bash run.sh
