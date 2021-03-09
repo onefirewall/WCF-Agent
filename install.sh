@@ -2,7 +2,7 @@
 ###########################################
 #        OneFirewall Alliance LTD         #
 ###########################################
-echo "WV1"
+echo "V1"
 
 # pre-install
 rm -rf WCF-Agent-latest/
