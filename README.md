@@ -6,11 +6,11 @@
 
 ## Obtain OneFirewall Certificate
 *The use of the WCF Database can be obtained via a certificate which is provided for Threat Intelligence Feeds older than 7 days (community edition), for commercial use please see the [subscriptions plans](https://onefirewall.com/get-started/index.html?tag=github)*
-
-## Build
 1. Install docker
 2. Install docker-compose
-3. User Linux box (x64)
+3. Use Linux x64
+
+## Build
 ```
 docker build . -t onefirewall/wcf-agent:latest
 ```
