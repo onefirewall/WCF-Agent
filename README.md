@@ -19,12 +19,11 @@ docker push onefirewall/wcf-agent:<VERSION>
 
 
 ## Install
-1. Generate a config.json file from https://app.onefirewall.com store it in ~/.onefirewall/config.json
 ```
 mkdir -p ~/.onefirewall/
 mkdir -p /opt/onefirewall/acl/
-
 ```
+Generate a config.json file from https://app.onefirewall.com store it in ~/.onefirewall/config.json
 
 ## Tests
 ```
