@@ -11,7 +11,7 @@ onefirewall-wcf-agent:
       do time node app ids ./config/config.json; 
       time node app ips ./config/config.json;
       ls -l /opt/onefirewall/acl/;
-      echo 'sleeping for a minute.....shhh.....';
+      echo 'sleeping for a minute,shhh.....';
       sleep 60; 
     done
     "

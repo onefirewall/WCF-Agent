@@ -8,22 +8,23 @@
 *The use of the WCF Database can be obtained via a certificate which is provided for Threat Intelligence Feeds older than 7 days (community edition), for commercial use please see the [subscriptions plans](https://onefirewall.com/get-started/index.html?tag=github)*
 
 ## Build
+1. Install docker
+2. Install docker-compose
+3. User Linux box (x64)
 ```
-docker build . -t onefirewall/wcf-agent:<VERSION> 
+docker build . -t onefirewall/wcf-agent:latest
 ```
 
 ## Deploy
 ```
-docker push onefirewall/wcf-agent:<VERSION> 
+docker push onefirewall/wcf-agent:latest
 ```
-
 
 ## Install
-```
-mkdir -p ~/.onefirewall/
-mkdir -p /opt/onefirewall/acl/
-```
 Generate a config.json file from https://app.onefirewall.com store it in ~/.onefirewall/config.json
+```
+wget -O - https://raw.githubusercontent.com/onefirewall/WCF-Agent/master/install.sh | bash
+```
 
 ## Tests
 ```
@@ -35,8 +36,9 @@ docker run onefirewall/wcf-agent:latest node app test
 docker-compose up -d
 ```
 
-## Stop/Kill
+## Stop
 ```
 docker kill wcf-agent_onefirewall-wcf-agent_1
 ```
+
 [onefirewall.com](https://onefirewall.com?tag=github-wcf-agent)
