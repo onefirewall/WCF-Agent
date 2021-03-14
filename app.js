@@ -1,14 +1,14 @@
 /*
-    Author: OneFirewall Alliance LTD
+    Author: OneFirewall Alliance LTD 2018-2021
 */
 
 console.log("\
 ┌───────────────┬──────────────────────────────────────────────────────────────┐\n\
 │ Name          │ World Crime Feeds (WCF) Agent                                │\n\
 ├───────────────┼──────────────────────────────────────────────────────────────┤\n\
-│ Version       │ 2.0                                                          │\n\
+│ Version       │ 2.02                                                         │\n\
 ├───────────────┼──────────────────────────────────────────────────────────────┤\n\
-│ Author        │ OneFirewall Alliance LTD                                     │\n\
+│ Author        │ OneFirewall Alliance LTD 2018-2021                           │\n\
 ├───────────────┼──────────────────────────────────────────────────────────────┤\n\
 │ More info     │ https://onefirewall.com/info                                 │\n\
 └───────────────┴──────────────────────────────────────────────────────────────┘\
@@ -33,7 +33,7 @@ var args = process.argv.slice(0)
 
 function reset_function(){
 
-    var db = level("./mydb", options)
+    var db = level("./db/mydb", options)
     
     db.createReadStream().on('data', function (data) {
         db.del(data.key, function (err) {
@@ -47,7 +47,7 @@ function reset_function(){
     })
 
 
-    var db_ids = level("./mydb_ids", options)
+    var db_ids = level("./db/mydb_ids", options)
     
     db_ids.createReadStream().on('data', function (data) {
         db_ids.del(data.key, function (err) {
@@ -60,7 +60,7 @@ function reset_function(){
     }).on('end', function () {
     })
 
-    var db_config = level("./db_config", options)
+    var db_config = level("./db/db_config", options)
 
     db_config.createReadStream().on('data', function (data) {
         db_config.del(data.key, function (err) {
@@ -77,7 +77,7 @@ function reset_function(){
 
 function db_call(){
    
-    var db = level("./mydb", options)
+    var db = level("./db/mydb", options)
     db.createReadStream().on('data', function (data) {
         console.log(data.key, '=', data.value)
     }).on('error', function (err) {
@@ -91,7 +91,7 @@ function db_call(){
     
     console.log('======================')
 
-    var db_ids = level("./mydb_ids", options)
+    var db_ids = level("./db/mydb_ids", options)
     db_ids.createReadStream().on('data', function (data) {
         console.log(data.key, '=', data.value)
     }).on('error', function (err) {
@@ -103,7 +103,7 @@ function db_call(){
         //console.log('Stream ended')
     })
 
-    var db_config = level("./db_config", options)
+    var db_config = level("./db/db_config", options)
     db_config.createReadStream().on('data', function (data) {
         console.log(data.key, '=', data.value)
     }).on('error', function (err) {
@@ -120,8 +120,8 @@ function db_call(){
 
 function ips_call(){
     
-    var db = level("./mydb", options)
-    var db_config = level("./db_config", options)
+    var db = level("./db/mydb", options)
+    var db_config = level("./db/db_config", options)
 
     var ts_todo = 0;
     //var latest_read_ts = keep_ts_updated()
@@ -158,14 +158,13 @@ function ips_call(){
         }
 
     })
-
 }
 
 
 function ids_call(){
-    //var db = level("./mydb", options)
+    //var db = level("./db/mydb", options)
     console.log("INFO: IDS Enabled")
-    var db = level("./mydb_ids", options)
+    var db = level("./db/mydb_ids", options)
     var input_obj = {
         config, db
     }
@@ -192,7 +191,6 @@ if(args[2]==="test"){
         console.error("ERROR: config.json file is missing")
         process.exit(1)
     }
-    
     
     if(args[2]==="reset")
         reset_function()

@@ -1,9 +1,17 @@
 onefirewall-wcf-agent:
-  image: onefirewall/wcf-agent:v2
+  image: onefirewall/wcf-agent:latest
   volumes:
-    - "/var/log:/var/log:ro"
+    - "/var/log/:/var/log/:ro"
+    - "/opt/onefirewall/acl/:/opt/onefirewall/acl/:rw"
     - "~/.onefirewall/:/opt/onefirewall/WCF-Agent-latest/config/:ro"
+    - "~/.onefirewall/:/opt/onefirewall/WCF-Agent-latest/db/:rw"
   command: >
     bash -c "
-    while true; do node app ids ./config/config.json; node app ips ./config/config.json; sleep 60; done
+    while true; 
+      do time node app ids ./config/config.json; 
+      time node app ips ./config/config.json;
+      ls -l /opt/onefirewall/acl/;
+      echo 'sleeping for a minute.....shhh.....';
+      sleep 60; 
+    done
     "

@@ -7,26 +7,37 @@
 ## Obtain OneFirewall Certificate
 *The use of the WCF Database can be obtained via a certificate which is provided for Threat Intelligence Feeds older than 7 days (community edition), for commercial use please see the [subscriptions plans](https://onefirewall.com/get-started/index.html?tag=github)*
 
+## Build
+```
+docker build . -t onefirewall/wcf-agent:<VERSION> 
+```
+
+## Deploy
+```
+docker push onefirewall/wcf-agent:<VERSION> 
+```
+
+
 ## Install
-1. Install the latest version of WCF Agent by OneFirewall
+1. Generate a config.json file from https://app.onefirewall.com store it in ~/.onefirewall/config.json
 ```
-wget -O - https://raw.githubusercontent.com/onefirewall/WCF-Agent/master/install.sh | bash
+mkdir -p ~/.onefirewall/
+mkdir -p /opt/onefirewall/acl/
+
 ```
-2. Login at https://app.onefirewall.com & Generate a config.json file which holds a certificate for accessing the World Crime Feeds API (navigate to Agent page to select the configuration before you generate the config.json file)
 
 ## Tests
 ```
-cd  /opt/onefirewall/WCF-Agent-latest
-node app reset $(pwd)/config.json    # To reset WCF locally
-node app ips $(pwd)/config.json      # To download the latest Threat Feeds
-node app ids $(pwd)/config.json      # To push security events from local IDSs
-node app db $(pwd)/config.json       # To view the Level DB locally
+docker run onefirewall/wcf-agent:latest node app test
 ```
 
-## Run continuously via Crontab
-As a root add the below command in crontab 
+## Run
 ```
-* * * * * cd /opt/onefirewall/WCF-Agent-latest && bash run.sh
+docker-compose up -d
 ```
 
+## Stop/Kill
+```
+docker kill wcf-agent_onefirewall-wcf-agent_1
+```
 [onefirewall.com](https://onefirewall.com?tag=github-wcf-agent)
