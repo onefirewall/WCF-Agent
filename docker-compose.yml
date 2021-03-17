@@ -1,4 +1,4 @@
-onefirewall-wcf-agent:
+onefirewall-wcf-agent-latest:
   image: onefirewall/wcf-agent:latest
   volumes:
     - "/var/log/:/var/log/:ro"
