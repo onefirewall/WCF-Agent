@@ -71,7 +71,7 @@ var Checkpoint = function() {
             console.log('Stop checkpoint - >' + (new Date().getTime() - ts_now3) + ' ms');
             wstream.end();
             if (something_changed) {
-                reload_rules(input_obj, input_obj.config.ips.checkpoint.reload_command)
+                reload_rules(input_obj, input_obj.config.ips.checkpoint.command)
             }
         })
     }
