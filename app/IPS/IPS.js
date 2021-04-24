@@ -3,6 +3,8 @@ var ModSec = require('./Plugins/ModSec.js')
 var HAProxy = require('./Plugins/HAProxy.js')
 var CSV_Export = require('./Plugins/CSV_Export.js')
 var IPTables = require('./Plugins/IPTables.js')
+var Checkpoint = require('./Plugins/Checkpoint.js')
+
 var CloudFlare = require('./Plugins/CloudFlareIPS.js')
 var Cisco = require('./Plugins/Cisco.js')
 var AWSWAF = require('./Plugins/AwsIPS.js')
@@ -18,6 +20,8 @@ var IPS = function (){
     var csv_export = new CSV_Export()
 
     var ipTables = new IPTables()
+    var checkpoint = new Checkpoint()
+
     var awsWaf = new AWSWAF()
 
     var dbcleanup = new DBCleanUP()
@@ -69,6 +73,12 @@ var IPS = function (){
         if(input_obj.config.ips.iptables.active===true){ // iptables
             console.log('INFO: IPS iptables Enabled')            
             callback_array.push(ipTables.init)
+            isPluginEnabled = true;
+        }
+
+        if(input_obj.config.ips.checkpoint.active===true){ // Checkpoint
+            console.log('INFO: IPS Checkpoint Enabled')            
+            callback_array.push(checkpoint.init)
             isPluginEnabled = true;
         }
 
