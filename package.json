@@ -2,7 +2,7 @@
   "name": "onefirewall-agent",
   "version": "2.11.07",
   "description": "World Crime Feeds (WCF) - Agent",
-  "author": "Sotiraki Sima <sotiraki.sima@onefirewall.com>",
+  "author": "OneFirewall R&D Team",
   "private": true,
   "repository": {
     "type": "git",

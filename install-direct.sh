@@ -19,6 +19,7 @@ cd WCF-Agent-latest
 npm install
 node app test
 rm -rf .github/
+rm -rf .git/
 rm -rf images/
 rm -rf test/
 rm -rf .gitignore
