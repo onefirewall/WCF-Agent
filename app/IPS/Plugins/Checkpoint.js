@@ -118,7 +118,7 @@ var Checkpoint = function() {
             },
             install: {
                 posta_data: {
-                    'policy-package': "standard",
+                    'policy-package': input_obj.config.ips.checkpoint.policy,
                     'access': true,
                     'targets': input_obj.config.ips.checkpoint.gateways.split(",")
                 },
