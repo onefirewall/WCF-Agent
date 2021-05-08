@@ -10,6 +10,7 @@ LOCKFILE=lock.txt
 EXEC_FILE=onefirewall-agent
 
 #cd $INSTALLED_DIR;
+export NODE_TLS_REJECT_UNAUTHORIZED=0
 
 H=$(date +%H) # Hour
 M=$(date +%M) # Minute

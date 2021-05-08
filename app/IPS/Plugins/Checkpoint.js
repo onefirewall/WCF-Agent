@@ -138,6 +138,7 @@ var Checkpoint = function() {
                         'name': "ofa_h_" + element,
                         'ipv4-address': element,
                         'comments': "OneFirewall Malicious IP",
+                        'domain': {'name': input_obj.config.ips.checkpoint.group},
                         'tags': ["OneFirewall", "WCF Server"],
                         'groups': [input_obj.config.ips.checkpoint.group]
                     },
@@ -229,7 +230,11 @@ var Checkpoint = function() {
                 }
             } else {
                 console.log(err)
-                console.log('Ops1')
+                try{
+                    console.log(res.statusCode)
+                    console.log(res.body)
+                }catch(e){}
+                console.log('Error Publish')
             }
         })
     }
@@ -260,7 +265,11 @@ var Checkpoint = function() {
                 }
             } else {
                 console.log(err)
-                console.log('Ops1')
+                try{
+                    console.log(res.statusCode)
+                    console.log(res.body)
+                }catch(e){}
+                console.log('Error wait Publish')
             }
         })
     }
@@ -287,7 +296,11 @@ var Checkpoint = function() {
                 }
             } else {
                 console.log(err)
-                console.log('Ops5')
+                try{
+                    console.log(res.statusCode)
+                    console.log(res.body)
+                }catch(e){}
+                console.log('Error Install')
             }
         })
     }
@@ -318,7 +331,11 @@ var Checkpoint = function() {
                 }
             } else {
                 console.log(err)
-                console.log('Ops1')
+                try{
+                    console.log(res.statusCode)
+                    console.log(res.body)
+                }catch(e){}
+                console.log('Error Wait Install')
             }
         })
     }
@@ -339,8 +356,6 @@ var Checkpoint = function() {
             method: 'POST'
         }, function(err, res, body) {
     
-            
-    
             if (!err && (res.statusCode == 200 || res.statusCode == 201 || res.statusCode == 409 || res.statusCode == 400)) {
                 try {
                     checkpoint_rules(index_rule+1)
@@ -349,7 +364,11 @@ var Checkpoint = function() {
                 }
             } else {
                 console.log(err)
-                console.log('Ops-rule')
+                try{
+                    console.log(res.statusCode)
+                    console.log(res.body)
+                }catch(e){}
+                console.log('Error Rules',index_rule,json_actions.rules[index_rule].path)
             }
         })
     }
