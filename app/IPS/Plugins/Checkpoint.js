@@ -254,6 +254,7 @@ var Checkpoint = function() {
                     var server_data = JSON.parse(res.body)
                     status_task = server_data['tasks'][0]['status']
                     if(status_task=="succeeded"){
+                        console.log("Published")
                         checkpoint_install()
                     }else{
                         console.log(server_data['tasks'][0]['progress-percentage'], "%")
@@ -320,7 +321,7 @@ var Checkpoint = function() {
                     var server_data = JSON.parse(res.body)
                     status_task = server_data['tasks'][0]['status']
                     if(status_task=="succeeded"){
-                        console.log("ALL DONE")
+                        console.log("Installed")
                     }else{
                         console.log(server_data['tasks'][0]['progress-percentage'], "%")
                         setTimeout(checkpoint_wait_install, 3000)
