@@ -90,6 +90,7 @@ var Checkpoint = function() {
                 posta_data: {
                     'user': input_obj.config.ips.checkpoint.username,
                     'password': input_obj.config.ips.checkpoint.password,
+                    'domain': input_obj.config.ips.checkpoint.domain,
                     'session-timeout': 3600
                 },
                 headers: {
@@ -138,7 +139,6 @@ var Checkpoint = function() {
                         'name': "ofa_h_" + element,
                         'ipv4-address': element,
                         'comments': "OneFirewall Malicious IP",
-                        'domain': {'name': input_obj.config.ips.checkpoint.group},
                         'tags': ["OneFirewall", "WCF Server"],
                         'groups': [input_obj.config.ips.checkpoint.group]
                     },
@@ -356,7 +356,7 @@ var Checkpoint = function() {
             method: 'POST'
         }, function(err, res, body) {
     
-            if (!err && (res.statusCode == 200 || res.statusCode == 201 || res.statusCode == 409 || res.statusCode == 400)) {
+            if (!err && (res.statusCode == 200 || res.statusCode == 201 || res.statusCode == 409 || res.statusCode == 400 || res.statusCode == 404)) {
                 try {
                     checkpoint_rules(index_rule+1)
                 } catch (e) {
