@@ -4,6 +4,7 @@ var HAProxy = require('./Plugins/HAProxy.js')
 var CSV_Export = require('./Plugins/CSV_Export.js')
 var IPTables = require('./Plugins/IPTables.js')
 var Checkpoint = require('./Plugins/Checkpoint.js')
+var CheckpointSecureXL = require('./Plugins/CheckpointSecureXL.js')
 
 var CloudFlare = require('./Plugins/CloudFlareIPS.js')
 var Cisco = require('./Plugins/Cisco.js')
@@ -21,6 +22,8 @@ var IPS = function (){
 
     var ipTables = new IPTables()
     var checkpoint = new Checkpoint()
+    var checkpointsecureXL = new CheckpointSecureXL()
+
 
     var awsWaf = new AWSWAF()
 
@@ -79,6 +82,12 @@ var IPS = function (){
         if(input_obj.config.ips.checkpoint.active===true){ // Checkpoint
             console.log('INFO: IPS Checkpoint Enabled')            
             callback_array.push(checkpoint.init)
+            isPluginEnabled = true;
+        }
+
+        if(input_obj.config.ips.checkpoint_securexl.active===true){ // Checkpoint SecureXL
+            console.log('INFO: IPS Checkpoint SecureXL Enabled')            
+            callback_array.push(checkpointsecureXL.init)
             isPluginEnabled = true;
         }
 
