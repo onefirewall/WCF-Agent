@@ -56,7 +56,7 @@ function read_all_from_server(input_obj, callback_array, totalElementReaded) {
                     if(input_obj.rules_ram != undefined && input_obj.rules_ram.length != 0){
                         last_ts = input_obj.rules_ram[input_obj.rules_ram.length-1].ts
                         input_obj.ts_todo = last_ts
-                        totalElementReaded+= input_obj.rules_ram.length
+                        totalElementReaded += input_obj.rules_ram.length
                     }
                     console.log("INFO: Remote Read: Ip readed " + server_data.body.length + "/Total " + totalElementReaded)
                 }
@@ -147,6 +147,8 @@ function recursive_write_to_db(input_obj, server_data, index, batchOps, callback
                 val.eval = v.eval;
                 val.events = v.events;
                 val.decision = v.decision;
+                val.ts = v.ts;
+                val.ttl = v.ttl;
                 batchOps.push({ type: 'put', key: k, value: val })
                 recursive_write_to_db(input_obj, server_data, ++index, batchOps, callback_array, totalElementReaded);
             }

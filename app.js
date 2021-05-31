@@ -133,6 +133,7 @@ function ips_call(){
     db_config.get('config', function (err, value) {
         
         var ts_now = Math.round((new Date()).getTime() / 1000)
+        ts_now -=60
         db_config.put('config', {ts: ts_now}).then(function () {  }).catch(function (err) { console.error("c" + err) })
 
         if (!err){

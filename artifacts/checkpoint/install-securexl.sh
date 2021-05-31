@@ -14,6 +14,7 @@
 # fwaccel dos blacklist -l /file/path
 # fwaccel dos blacklist -s
 
+
 FILE=$1
 CONNECTIONS=$2
 CON_PASSWORD=$3

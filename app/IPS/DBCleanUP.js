@@ -43,7 +43,9 @@ var DBCleanUP = function (){
 
     var doIsEleToBeRemoved = function(input_obj, data, score){
         //var score = new Function(data.value.eval)()
+        
         var delete_this = false;
+
         if(score<input_obj.config.score_threshold){
             var delete_this = true;
             for (var key in input_obj.config.ips) {

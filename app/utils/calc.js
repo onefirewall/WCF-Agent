@@ -7,6 +7,7 @@ var CALC = function (){
             how_changed: false
         }
 
+        ts_now = parseInt(new Date()/1000)
         //var score = new Function(data.value.eval)()
         
         if(score==undefined){
@@ -27,7 +28,13 @@ var CALC = function (){
                 to_return.how_changed = false
             }
 
-        }else if(data.value[plugin] && data.value[plugin].blocked===false){ // IS UN BLOCKED
+            if("ttl" in data.value && data.value.ttl!=null && data.value.ttl<=ts_now){
+                to_return.changed = true
+                to_return.how_changed = false
+            }
+
+
+        }else if(data.value[plugin] && data.value[plugin].blocked===false){ // IS UNBLOCKED
             if(data.value.decision!=undefined){
                 if(data.value.decision==1){
                     to_return.changed = true

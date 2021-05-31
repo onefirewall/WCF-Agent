@@ -1,6 +1,9 @@
 var fs = require('fs')
 const exec = require('child_process').exec
 var CALC = require('../../utils/calc.js')
+var Send_Feedback = require('../../Remote/Send_Feedback.js')
+var Netmask = require('netmask').Netmask
+
 var DBCleanUP = require('../DBCleanUP.js')
 var plugin = "checkpoint_securexl"
 var ELK_Logs = require('../../logs/ELK_Logs.js')
@@ -8,6 +11,7 @@ var ELK_Logs = require('../../logs/ELK_Logs.js')
 var CheckpointSecureXL = function() {
     var calc = new CALC()
     var dbcleanup = new DBCleanUP()
+    var send_seedback = new Send_Feedback()
     blacklist_file_name = "blacklist_onefirewall.txt"
 
     this.init = function(input_obj, callback_array) {
@@ -20,6 +24,7 @@ var CheckpointSecureXL = function() {
         evalScore = new Function('scoreTimeZero', 'current_time', input_obj.eval)
 
         var wstream = fs.createWriteStream(blacklist_file_name);
+        var blacklist = []
 
         input_obj.db.createReadStream().on('data', function(data) {
 
@@ -34,8 +39,22 @@ var CheckpointSecureXL = function() {
             }
 
             if (data.value[plugin] && data.value[plugin].blocked === true) {
-                wstream.write(data.value.ip + "\n")
+                
+                try{
+                    var block = new Netmask(data.value.ip);
+                    block.forEach(function(ip, long, index){
+                        //console.log(ip)
+                        wstream.write(ip + "\n")
+                    });
+    
+                    blacklist.push(data.value.ip)
+                }catch(e){
+
+                }
+
             }
+
+            
 
             if (dbcleanup.isEleToBeRemoved(input_obj, data, score)) {
                 batchOps.push({ type: 'del', key: data.key })
@@ -72,12 +91,17 @@ var CheckpointSecureXL = function() {
             console.log('Stop checkpoint_securexl - >' + (new Date().getTime() - ts_now3) + ' ms');
             wstream.end();
             wstream.close();
+            comunicate_feedback(input_obj, blacklist)
             if (something_changed) {
                 reload_rules(input_obj, input_obj.config.ips.checkpoint_securexl.command)
             }
         })
     }
 
+    function comunicate_feedback(input_obj, blacklist){
+        
+        send_seedback.post_results(input_obj, plugin, blacklist)
+    }
 
     function reload_rules(input_obj, command) {
         try {
