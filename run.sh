@@ -3,7 +3,6 @@
 #        OneFirewall Alliance LTD         #
 ###########################################
 
-cd /opt/onefirewall/WCF-Agent-latest
 INSTALLED_DIR=$(pwd)
 CONFIG_JSON=config.json
 LOCKFILE=lock.txt
