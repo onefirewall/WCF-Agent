@@ -6,11 +6,12 @@ var Send_Feedback = function (){
 
     var to_send = []
     
-    this.post_results = function(input_obj, plugin, blacklist){
+    this.post_results = function(input_obj, plugin, blacklist, code){
         post_body = {
             agid: input_obj.config.gaid,
             plugin: plugin,
             hostname: os.hostname(),
+            code: code,
             score_threshold: input_obj.config.score_threshold,
             blacklist: blacklist
         }

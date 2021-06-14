@@ -53,9 +53,7 @@ var CheckpointSecureXL = function() {
                 }
 
             }
-
             
-
             if (dbcleanup.isEleToBeRemoved(input_obj, data, score)) {
                 batchOps.push({ type: 'del', key: data.key })
             } else {
@@ -91,32 +89,33 @@ var CheckpointSecureXL = function() {
             console.log('Stop checkpoint_securexl - >' + (new Date().getTime() - ts_now3) + ' ms');
             wstream.end();
             wstream.close();
-            comunicate_feedback(input_obj, blacklist)
+            //comunicate_feedback(input_obj, blacklist)
             if (something_changed) {
-                reload_rules(input_obj, input_obj.config.ips.checkpoint_securexl.command)
+                reload_rules(input_obj, blacklist, input_obj.config.ips.checkpoint_securexl.command)
+            }else{
+                send_seedback.post_results(input_obj, plugin, blacklist, -1)
             }
         })
     }
 
-    function comunicate_feedback(input_obj, blacklist){
-        
-        send_seedback.post_results(input_obj, plugin, blacklist)
-    }
 
-    function reload_rules(input_obj, command) {
+    function reload_rules(input_obj, blacklist, command) {
         try {
             console.log("INFO: Execute Command: " + command)
             full_command = command + " " + blacklist_file_name + " " + input_obj.config.ips.checkpoint_securexl.connections + " " + input_obj.config.ips.checkpoint_securexl.password
             console.log(full_command)
 
-            exec(full_command, (error, stdout, stderr) => {
+            exec(full_command, (error, stdout, stderr, code) => {
                 if (error !== null) {   
-                    console.log(error)
-                    console.log(stdout)
                     console.log(stderr)
+                    console.log(stdout)
+                    console.log(error)
                     new ELK_Logs().send_logs(input_obj,0,0,{"m": `ERROR: checkpoint_securexl exec error: ${error}`}, "ERROR")
                 }
+            }).on('exit', (code) => {
+                send_seedback.post_results(input_obj, plugin, blacklist, code)
             });
+
         } catch (err) {
             console.error(err)
         }

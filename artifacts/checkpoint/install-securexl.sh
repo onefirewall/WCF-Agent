@@ -35,12 +35,12 @@ if [ -f "$FILE" ]; then
         connection_end_point=$val
 
         echo "$connection_end_point: Enable SecureXL..."
-        sshpass -p "$connection_password" ssh "$connection_end_point" "fwaccel on && fwaccel dos config set --enable-blacklists && fwaccel dos config set --enable-internal"
+        sshpass -p "$connection_password" ssh -o ConnectTimeout=2 "$connection_end_point" "fwaccel on && fwaccel dos config set --enable-blacklists && fwaccel dos config set --enable-internal"
         if [ $? -eq 0 ]
         then
             echo -e "DONE\n"
         else
-            exit 1
+            exit 10
         fi
 
 
@@ -50,16 +50,16 @@ if [ -f "$FILE" ]; then
         then
             echo -e "DONE\n"
         else
-            exit 1
+            exit 20
         fi
 
         echo "$connection_end_point: Flush and load"
-        sshpass -p "$connection_password" ssh "$connection_end_point" "fwaccel dos blacklist -F && fwaccel dos blacklist -l ~/$FILE"
+        sshpass -p "$connection_password" ssh -o ConnectTimeout=2 "$connection_end_point" "fwaccel dos blacklist -F && fwaccel dos blacklist -l ~/$FILE"
         if [ $? -eq 0 ]
         then
             echo -e "DONE\n"
         else
-            exit 1
+            exit 30
         fi
 
         #rm -rf "$FILE"
