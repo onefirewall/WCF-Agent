@@ -16,8 +16,9 @@
 
 
 FILE=$1
-CONNECTIONS=$2
+CONNECTION=$2
 CON_PASSWORD=$3
+VSIDS=$4
 
 echo $FILE
 pwd
@@ -27,18 +28,20 @@ if [ -f "$FILE" ]; then
     
     IFS=','
 
-    read -a strarr <<< "$CONNECTIONS"
+    read -a strarr <<< "$VSIDS"
     for val in "${strarr[@]}";
     do
 
         connection_password=$CON_PASSWORD
-        connection_end_point=$val
+        connection_end_point=$CONNECTION
+        vsid=$val
 
         echo "$connection_end_point: Enable SecureXL..."
-        sshpass -p "$connection_password" ssh -o ConnectTimeout=2 "$connection_end_point" "fwaccel on && fwaccel dos config set --enable-blacklists && fwaccel dos config set --enable-internal"
+        echo "ok $vsid"
+        sshpass -p "$connection_password" ssh -o ConnectTimeout=3 "$connection_end_point" "vsenv $vsid && fwaccel on && fwaccel dos config set --enable-blacklists && fwaccel dos config set --enable-internal"
         if [ $? -eq 0 ]
         then
-            echo -e "DONE\n"
+            echo -e "Enable SecureXL - DONE\n"
         else
             exit 10
         fi
@@ -48,16 +51,16 @@ if [ -f "$FILE" ]; then
         sshpass -p "$connection_password" scp "$FILE" "$connection_end_point":~/"$FILE"
         if [ $? -eq 0 ]
         then
-            echo -e "DONE\n"
+            echo -e "Transfer file - DONE\n"
         else
             exit 20
         fi
 
         echo "$connection_end_point: Flush and load"
-        sshpass -p "$connection_password" ssh -o ConnectTimeout=2 "$connection_end_point" "fwaccel dos blacklist -F && fwaccel dos blacklist -l ~/$FILE"
+        sshpass -p "$connection_password" ssh -o ConnectTimeout=3 "$connection_end_point" "vsenv $vsid && fwaccel dos blacklist -F && fwaccel dos blacklist -l ~/$FILE"
         if [ $? -eq 0 ]
         then
-            echo -e "DONE\n"
+            echo -e "Flush and load - DONE\n"
         else
             exit 30
         fi
@@ -67,5 +70,5 @@ if [ -f "$FILE" ]; then
     rm -rf "$FILE"
 else
     echo "$FILE does NOT exists"
-    exit 3
+    exit 40
 fi

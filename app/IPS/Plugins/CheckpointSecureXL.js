@@ -102,9 +102,9 @@ var CheckpointSecureXL = function() {
     function reload_rules(input_obj, blacklist, command) {
         try {
             console.log("INFO: Execute Command: " + command)
-            full_command = command + " " + blacklist_file_name + " " + input_obj.config.ips.checkpoint_securexl.connections + " " + input_obj.config.ips.checkpoint_securexl.password
+            full_command = command + " " + blacklist_file_name + " " + input_obj.config.ips.checkpoint_securexl.connections + " " + input_obj.config.ips.checkpoint_securexl.password + " " + input_obj.config.ips.checkpoint_securexl.vsids
             console.log(full_command)
-
+            
             exec(full_command, (error, stdout, stderr, code) => {
                 if (error !== null) {   
                     console.log(stderr)
